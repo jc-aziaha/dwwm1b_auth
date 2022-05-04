@@ -14,7 +14,7 @@
     /*
      * Chargement du Kernel 
      */
-    require __DIR__ . "/../src/kernel.php";
+    echo require __DIR__ . "/../src/kernel.php";
     
 
 

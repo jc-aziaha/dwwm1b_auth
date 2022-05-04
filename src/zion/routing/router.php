@@ -72,24 +72,42 @@ declare(strict_types=1);
         // var_dump($routes); die();
         // echo "</pre>";
 
+        // On parcours chaque clé de "$routes"
         foreach ($routes[$_SERVER['REQUEST_METHOD']] as $route) 
         {
+            // Et pour chaque route,
+
+            // On récupère son uri
             $uri_route = $route[0];
+
+            // On récupère l'uri provenant de la barre d'url
             $uri_url   = strip_tags(urldecode(parse_url(trim($_SERVER['REQUEST_URI']), PHP_URL_PATH)));
 
+            // Et ensuite, on va comparer les 2 uri
+
+            // Et pour ça, on prepare un pattern
             $pattern = preg_replace("#{[a-z]+}#", "([a-zA-Z0-9-_]+)", $uri_route);
             $pattern = "#^$pattern$#";
 
+            // Si le pattern match avec l'uri_url, 
+            // c'est que la route existe 
             if ( preg_match($pattern, $uri_url, $matches) ) 
             {
+                // On supprime le premier indice du tableau, 
+                // qui contient par défautt l'uri de l'url
                 array_shift($matches);
                 $parameters = $matches;
 
+                // On récupère le controller et l'action à retourner au noyau
                 $controller = $route[1][0];
                 $action     = $route[1][1];
 
+                // Si le tableau $parameters n'est pas vide, 
+                // C'est que il y a des données dynamiques passées à la route
                 if ( $parameters ) 
                 {
+                    // On retourne au noyau le controller correspondant
+                    // ainsi que son action et le ou les paramètres
                     return [
                         "controller" => $controller,
                         "action"     => $action,
@@ -97,6 +115,7 @@ declare(strict_types=1);
                     ];
                 }
 
+                // Sinon, on retourne uniquement le controller et son action à executer
                 return [
                     "controller" => $controller,
                     "action"     => $action,

@@ -1,8 +1,8 @@
 <?php
 
-    function index() : ?array 
-    {
-        return null;
-    }
+    echo hello();
 
-    var_dump(index());
+    function hello()
+    {
+        return "hello";
+    }

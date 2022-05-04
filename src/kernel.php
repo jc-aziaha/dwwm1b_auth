@@ -13,6 +13,10 @@
     */
 
 
+    // Chargement des constantes
+    require __DIR__ . "/../config/constants.php";
+
+
     // Initialisation du routeur
     require __DIR__ . "/zion/routing/router.php";
 
@@ -22,6 +26,32 @@
 
 
     // Exécution du routeur
-    $data = run();
+    $router_data = run();
 
-    var_dump($data); die();
+
+    // Le noyau demande au controller de lui retourner les données générées
+    return getControllerData($router_data);
+
+
+    function getControllerData($router_data)
+    {
+        if (NULL == $router_data) 
+        {
+            require __DIR__ . "/controller/error/errorController.php";
+            return notFound();
+        }
+
+        $controller = $router_data['controller'];
+        $action     = $router_data['action'];
+
+        if ( isset($router_data['parameters']) && !empty($router_data['parameters']) ) 
+        {
+            $parameters = $router_data['parameters'];
+
+            require __DIR__ . "/controller/$controller.php";
+            return $action($parameters);
+        }
+
+        require __DIR__ . "/controller/$controller.php";
+        return $action();
+    }

@@ -10,7 +10,4 @@
     */
 
 
-    get("/", ["visitor/welcome/welcomeController", "index"]);
-
-    get("/category/{id}", ["visitor/welcome/welcomeController", "index"]);
-    
+    get("/", ["visitor/welcome/welcomeController", "index"]);  
