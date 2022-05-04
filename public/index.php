@@ -14,6 +14,7 @@
     /*
      * Chargement du Kernel 
      */
+    require __DIR__ . "/../src/kernel.php";
     
 
 

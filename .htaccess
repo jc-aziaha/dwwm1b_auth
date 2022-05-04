@@ -1,3 +1,6 @@
+# Ce fichier de configuration du serveur Apache permet de rediriger l'utilisateur 
+# vers l'index.php du dossier public.
+ 
 RewriteEngine On
 
 RewriteRule ^(.*)$ public/index.php

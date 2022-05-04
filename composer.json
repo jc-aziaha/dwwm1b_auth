@@ -1,10 +1,5 @@
 {
     "name": "user/auth",
-    "autoload": {
-        "psr-4": {
-            "User\\Auth\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Jean-Claude AZIAHA",
