@@ -9,5 +9,14 @@
      * --------------------------------------------
     */
 
+    /**
+     * Cette constante est un raccourci qui permet de se positionner 
+     * automatiquement dans le dossier "templates"
+     */
+    const TEMPLATES             = __DIR__ . "/../templates/";
 
-    const TEMPLATES = __DIR__ . "/../templates/";
+
+    /**
+     * Cette constante est un raccourci qui permet de charger le contrôleur abstrait
+     */
+    const ABSTRACT_CONTROLLER   = __DIR__ . "/../src/zion/abstractController/abstractController.php";

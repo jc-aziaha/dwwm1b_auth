@@ -123,5 +123,6 @@ declare(strict_types=1);
             }
         }
 
+        // Si la route ne match pas, le routeur retourne null comme valeur au kernel
         return null;
     }

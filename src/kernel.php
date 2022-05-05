@@ -28,6 +28,9 @@
     // Exécution du routeur
     $router_data = run();
 
+    // echo "<pre>";
+    // var_dump($router_data); die();
+
 
     // Le noyau demande au controller de lui retourner les données générées
     return getControllerData($router_data);
