@@ -1,11 +1,16 @@
+1) Créer un framework (cadre de travail) implémentant la MVC
+
 Modèle Vue Controller (MVC)
     * Modèle (Intéraction avec la base de données)
     * Vue (Pages visible dans le navigateur)
     * Controller (Traitement des données)
 
-Mise en place d'un système d'authentification
+
+
+2) Mise en place d'un système d'authentification
 
     1- Système d'inscription 
+        - Créer le formulaire
         - On reçoit les données d'un formulaire
         - On valide ces données 
         - On les insère dans une table de la base de données
