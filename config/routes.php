@@ -11,9 +11,10 @@
 
 
     
-    get("/", ["visitor/welcome/welcomeController", "index"]);
+    get("/",            ["visitor/welcome/welcomeController", "index"]);
 
 
                     // -------------Auth-----------
-    get("/register", ["visitor/registration/registerController", "register"]);
+    get("/register",    ["visitor/registration/registerController", "register"]);
+    post("/register",   ["visitor/registration/registerController", "register"]);
 

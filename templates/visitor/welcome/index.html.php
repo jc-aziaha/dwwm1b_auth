@@ -1,6 +1,12 @@
 <?php $layout = extends_of("layout/base_visitor.html.php"); ?>
 
-<?php $title = "Page d'accueil"; ?>
+<?php $title = "Page d'accueil" ?>
+
+<?php
+    $title = <<<HTML
+Page d'accueil
+HTML;
+?>
 
 <h1 class="text-center my-3 display-5">Hello World!</h1>
 

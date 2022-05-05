@@ -13,6 +13,10 @@
     */
 
 
+    // Chargement de l'autoloader
+    require __DIR__ . "/../vendor/autoload.php";
+
+
     // Chargement des constantes
     require __DIR__ . "/../config/constants.php";
 

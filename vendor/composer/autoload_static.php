@@ -6,18 +6,8 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitb0c62478edd863f9bb23b4bb1169abc8
 {
-    public static $prefixLengthsPsr4 = array (
-        'U' => 
-        array (
-            'User\\Auth\\' => 10,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'User\\Auth\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
+    public static $files = array (
+        '7d443565daf4bdb2bb9a10974a6a1496' => __DIR__ . '/../..' . '/src/zion/helpers.php',
     );
 
     public static $classMap = array (
@@ -27,8 +17,6 @@ class ComposerStaticInitb0c62478edd863f9bb23b4bb1169abc8
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb0c62478edd863f9bb23b4bb1169abc8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb0c62478edd863f9bb23b4bb1169abc8::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitb0c62478edd863f9bb23b4bb1169abc8::$classMap;
 
         }, null, ClassLoader::class);

@@ -6,5 +6,10 @@
             "email": "aziaha.formations@gmail.com"
         }
     ],
+    "autoload": {
+        "files": [
+            "src/zion/helpers.php"
+        ]
+    },
     "require": {}
 }

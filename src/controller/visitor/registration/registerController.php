@@ -17,5 +17,10 @@ require ABSTRACT_CONTROLLER;
      */
     function register() : string
     {
+        if ( $_SERVER['REQUEST_METHOD'] === "POST" ) 
+        {
+            dd($_POST);
+        }
+        
         return render("visitor/registration/register.html.php");
     }
