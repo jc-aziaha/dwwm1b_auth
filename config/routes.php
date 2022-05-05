@@ -10,4 +10,10 @@
     */
 
 
+    
     get("/", ["visitor/welcome/welcomeController", "index"]);
+
+
+                    // -------------Auth-----------
+    get("/register", ["visitor/registration/registerController", "register"]);
+

@@ -1,5 +1,7 @@
 <?php $layout = extends_of("layout/base_visitor.html.php"); ?>
 
+<?php $title = "Page d'accueil"; ?>
+
 <h1 class="text-center my-3 display-5">Hello World!</h1>
 
 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem architecto dolore nihil corporis perferendis veniam debitis dolorem cupiditate quaerat animi maiores quia, neque dignissimos nobis. Quo amet corporis repellendus modi.

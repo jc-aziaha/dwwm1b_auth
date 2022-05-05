@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Auth <?= (isset($title) && !empty($title)) ? "- $title" : ""  ?></title>
 
         <!-- Google Font Links -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
         <!-- Base CSS  -->
         <link rel="stylesheet" href="/styles/base.css">
     </head>
-    
+
     <body class="bg-light">
         
         <!-- Start Navbar -->
@@ -36,7 +36,7 @@
                             <a class="nav-link" href="#">Connexion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inscription</a>
+                            <a class="nav-link" href="/register">Inscription</a>
                         </li>
                     </ul>
                 </div>
