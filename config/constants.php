@@ -26,3 +26,9 @@
      * Cette constante est un raccourci qui permet d'appeler le validateur
      */
     const VALIDATOR             = __DIR__ . "/../src/zion/validation/validator.php";
+
+
+    /**
+     * Cette constante est un raccourci qui permet d'établir une connexion avec la base de données
+     */
+    const DB                    = __DIR__ . "/database.php";

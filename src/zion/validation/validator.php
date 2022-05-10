@@ -28,6 +28,7 @@ declare(strict_types=1);
                 {
                     foreach ($messages as $key => $message) 
                     {
+                        
                         if ( ($rule === "requiredString") && ($key === "$input_name.requiredString") ) 
                         {
                             if ( requiredString_($data_clean[$input_name]) ) 
@@ -42,6 +43,42 @@ declare(strict_types=1);
                                 $errors[$input_name][] = $message;
                             }
                         }
+                        else if( (substr($rule, 0, 3) === "max") && ($key === "$input_name.max") )
+                        {
+                            if ( max_($data_clean[$input_name], $rule) ) 
+                            {
+                                $errors[$input_name][] = $message;
+                            }
+                        }
+                        else if( (substr($rule, 0, 3) === "min") && ($key === "$input_name.min") )
+                        {
+                            if ( min_($data_clean[$input_name], $rule) ) 
+                            {
+                                $errors[$input_name][] = $message;
+                            }
+                        }
+                        else if( ($rule === "email") && ($key === "$input_name.email") )
+                        {
+                            if ( email_($data_clean[$input_name]) ) 
+                            {
+                                $errors[$input_name][] = $message;
+                            }
+                        }
+                        else if( (substr($rule, 0, 6) === "exists") && ($key === "$input_name.exists") )
+                        {
+                            if ( exists_($data_clean[$input_name], $rule) ) 
+                            {
+                                $errors[$input_name][] = $message;
+                            }
+                        }
+                        else if( (substr($rule, 0, 4) === "same") && ($key === "$input_name.same") )
+                        {
+                            if ( same_($data_clean[$input_name], $rule, $data_clean) ) 
+                            {
+                                $errors[$input_name][] = $message;
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -54,7 +91,128 @@ declare(strict_types=1);
 // ------------------------------------------------------------------------------
 
 
-    function string_($value)
+    function same_($value, $rule, $data_clean)
+    {
+        $cut = strstr($rule, "::");
+        $cut = str_replace("::", "", $cut);
+        
+        if ( $value === $data_clean[$cut] ) 
+        {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Cette méthode du validateur permet de vérifier si la valeur envoyée par l'utilisateur 
+     * existe déjà dans la table ou non.
+     *
+     * @param string $value
+     * @param string $rule
+     * @return boolean
+     */
+    function exists_(string $value, string $rule) : bool
+    {
+        // "exists::user,email"
+
+        $cut = strstr($rule, "::");
+        $cut = str_replace("::", "", $cut);
+        $tab = explode(",", $cut);
+
+        $table  = $tab[0];
+        $column = $tab[1];
+
+        require DB;
+
+        $req = $db->prepare("SELECT * FROM {$table} WHERE {$column}=:{$column}");
+        $req->bindValue(":{$column}", $value);
+        $req->execute();
+        $row = $req->rowCount();
+        if ($row == 1) 
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Cette méthode du validateur permet de vérifier si l'email est valide ou non.
+     *
+     * @param string $value
+     * 
+     * @return boolean
+     */
+    function email_(string $value) : bool
+    {
+        if ( ! filter_var($value, FILTER_VALIDATE_EMAIL) )
+        {
+            return true;
+        }
+        return false;
+
+        // ------------------
+
+        // if ( filter_var($value, FILTER_VALIDATE_EMAIL) )
+        // {
+        //     return false;
+        // }
+        // return true;
+    }
+
+
+    /**
+     * Cette méthode du validateur permet de vérifier que le nombre de caractères 
+     * envoyé par l'utilisateur soit supérieur à la valeur souhaitée
+     *
+     * @param string $value
+     * @param string $rule
+     * 
+     * @return boolean
+     */
+    function min_(string $value, string $rule) : bool
+    {
+
+        if(preg_match("/\d+/", $rule, $matches))
+        {
+            // $max = intval($matches[0]);
+            $min = (int) $matches[0];
+
+            if ( mb_strlen($value) < $min ) 
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
+
+    /**
+     * Cette méthode du validateur permet de vérifier que le nombre de caractères 
+     * envoyé par l'utilisateur soit inférieur à la valeur souhaitée
+     *
+     * @param string $value
+     * @param string $rule
+     * 
+     * @return boolean
+     */
+    function max_(string $value, string $rule) : bool
+    {
+
+        if(preg_match("/\d+/", $rule, $matches))
+        {
+            // $max = intval($matches[0]);
+            $max = (int) $matches[0];
+
+            if ( mb_strlen($value) > $max ) 
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
+
+    function string_(string $value) : bool
     {
         if ( ! is_string($value) ) 
         {

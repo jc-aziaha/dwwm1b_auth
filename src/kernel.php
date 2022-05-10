@@ -13,6 +13,10 @@
     */
 
 
+    // Activation de l'utilisation des sessions
+    session_start();
+
+
     // Chargement de l'autoloader
     require __DIR__ . "/../vendor/autoload.php";
 

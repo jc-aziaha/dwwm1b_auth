@@ -15,4 +15,6 @@ Modèle Vue Controller (MVC)
         - On valide ces données 
         - On les insère dans une table de la base de données
 
+            --Tester la règle de validation "exists_"
+
     2- Système de connexion

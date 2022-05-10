@@ -42,6 +42,7 @@ require ABSTRACT_CONTROLLER;
                 "email.string"                      => "Veuillez entrer une chaîne de caractères.",
                 "email.min"                         => "L'email doit contenir au minimum 5 caractères.",
                 "email.max"                         => "L'email doit contenir au maximum 255 caractères.",
+                "email.email"                       => "Veuillez entrer un email valide.",
                 "email.exists"                      => "Impossible de créer un compte avec cet email.",
 
                 "password.requiredString"           => "Le mot de passe est obligatoire.",
@@ -56,7 +57,15 @@ require ABSTRACT_CONTROLLER;
                 "confirmPassword.same"              => "Le mot de passe doit être identique à sa confirmation.",
             ]);
 
-            dd($errors);
+            if ( count($errors) > 0 ) 
+            {
+                $_SESSION['old'] = inputsCleaner1($_POST);
+                $_SESSION['formErrors'] = $errors;
+                
+                return header("Location: " . $_SERVER['HTTP_REFERER']);
+            }
+
+            dd('cool');
         }
         
         return render("visitor/registration/register.html.php");

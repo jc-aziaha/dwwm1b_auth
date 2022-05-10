@@ -21,10 +21,9 @@
      * Cette fonction affiche le contenu qu'on lui donne 
      * mais n'arrête pas l'exécution du script
      *
-     * @param mixed $data
-     * @return mixed
+     * @param  $data
      */
-    function dump(mixed $data) : mixed
+    function dump($data) 
     {
         echo "<pre>";
         var_dump($data);
