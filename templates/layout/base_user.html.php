@@ -30,20 +30,11 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link <?= ($_SERVER['REQUEST_URI'] === "/") ? 'active' : '' ?>" aria-current="page" href="/">Accueil</a>
+                            <a class="nav-link" aria-current="page" href="/">Retour au site</a>
                         </li>
-                        <?php if(isset($_SESSION['auth']) && !empty($_SESSION['auth'])) : ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">Déconnexion</a>
-                            </li>
-                        <?php else :?>
-                            <li class="nav-item">
-                                <a class="nav-link <?= ($_SERVER['REQUEST_URI'] === "/login") ? 'active' : '' ?>" href="/login">Connexion</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link <?= ($_SERVER['REQUEST_URI'] === "/register") ? 'active' : '' ?>" href="/register">Inscription</a>
-                            </li>
-                        <?php endif ?>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/logout">Déconnexion</a>
+                        </li>
                     </ul>
                 </div>
             </div>

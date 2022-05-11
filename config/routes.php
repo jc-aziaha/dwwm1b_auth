@@ -21,3 +21,13 @@
     get("/login",       ["visitor/authentication/loginController", "login"]);
     post("/login",      ["visitor/authentication/loginController", "login"]);
 
+    get("/logout",      ["visitor/authentication/loginController", "logout"]);
+
+
+                    // -------------Home-----------
+    get("/home",        ["user/home/homeController", "index"]);
+    
+
+
+
+

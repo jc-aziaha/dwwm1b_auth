@@ -17,6 +17,12 @@ require ABSTRACT_CONTROLLER;
      */
     function register() : string
     {
+
+        if(isset($_SESSION['auth']) && !empty($_SESSION['auth'])) 
+        {
+            return redirectToUrl('/');
+        }
+        
         if ( $_SERVER['REQUEST_METHOD'] === "POST" ) 
         {
             require VALIDATOR;

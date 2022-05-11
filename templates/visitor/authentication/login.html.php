@@ -5,6 +5,14 @@
 <h1 class="text-center my-3 display-5">Connexion</h1>
 
 <div class="container my-5">
+
+    <?php if(isset($_SESSION['bad_credentials']) && !empty($_SESSION['bad_credentials'])) : ?>
+        <div class="alert alert-danger text-center" role="alert">
+            <?= $_SESSION['bad_credentials'] ?>
+        </div>
+        <?php unset($_SESSION['bad_credentials']); ?>
+    <?php endif ?>
+
     <form action="/login" method="POST">
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>

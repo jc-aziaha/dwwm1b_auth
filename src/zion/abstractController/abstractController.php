@@ -57,3 +57,15 @@ declare(strict_types=1);
     {
         header("Location: " . $_SERVER['HTTP_REFERER']);
     }
+
+
+    /**
+     * Cette fonction permet d'effectuer une redirection vers la page dont l'uri est passé en paramètres.
+     *
+     * @param string $uri_url
+     * @return void
+     */
+    function redirectToUrl(string $uri_url) : void
+    {
+        header("Location: $uri_url");
+    }

@@ -10,12 +10,22 @@ Modèle Vue Controller (MVC)
 2) Mise en place d'un système d'authentification
 
     1- Système d'inscription 
-        - Créer le formulaire
+        - On créé le formulaire
         - On reçoit les données d'un formulaire
         - On valide ces données 
-        - Afficher les messages d'erreurs
+        - Affiche les messages d'erreurs s'il y en a 
         - On les insère dans une table de la base de données
 
             --Tester la règle de validation "exists_"
 
     2- Système de connexion
+        - On créé le formulaire 
+        - On reçoit les données du formulaire
+        - On valide les données
+        - On affiche les messages d'erreurs s'il y en a 
+        - On compare l'email et le mot de passe envoyé par l'utilsateur avec ceux de tous 
+        les enregistrements de la table "user"
+            -- Si l'email match, c'est que cet utilisateur existe dans la table "user"
+            -- Ensuite on compare son mot de passe hashé avec celui du formulaire
+            et si ça match, c'est que que c'est le bon mot de passe
+            Du coup, on authentifie l'utilisateur

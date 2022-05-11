@@ -40,4 +40,7 @@
     const USER                  = __DIR__ . "/../src/manager/user.php"; 
 
 
+    /**
+     * Cette constante est un raccourci qui permet de charger l'authentificateur de l'application
+     */
     const AUTH_AUTHENTICATOR    = __DIR__ . "/../src/security/authAuthenticator.php";

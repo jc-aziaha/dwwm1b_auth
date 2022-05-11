@@ -12,6 +12,12 @@ require ABSTRACT_CONTROLLER;
     function login() : string
     {
 
+        if(isset($_SESSION['auth']) && !empty($_SESSION['auth'])) 
+        {
+            return redirectToUrl('/');
+        }
+
+
         if ( $_SERVER['REQUEST_METHOD'] === "POST") 
         {
             require VALIDATOR;
@@ -43,7 +49,36 @@ require ABSTRACT_CONTROLLER;
 
             require AUTH_AUTHENTICATOR;
 
+            $data_clean = inputsCleaner1($_POST);
+            $user = authenticateUser($data_clean);
+
+            if ( $user == null || empty($user) ) 
+            {
+                $_SESSION['bad_credentials'] = "Vos identifiants sont incorrects";
+                $_SESSION['old']             = inputsCleaner1($_POST);
+                return redirectBack();
+            }
+
+            $_SESSION['auth'] = $user;
+            // dd($_SESSION['auth']);
+
+
+            return redirectToUrl('/home');
+
         }
 
         return render("visitor/authentication/login.html.php");
+    }
+
+
+    /**
+     * Cette méthode permet de déconnecter un utilisateur et de le retourner vers la page de connexion
+     */
+    function logout()
+    {
+        session_destroy();
+        unset($_SESSION);
+        $_SESSION = [];
+
+        return redirectToUrl('/login');
     }
