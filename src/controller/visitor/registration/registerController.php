@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// Ce contr$oleur fait appel au contrôleur abstrait afin d'utilser sa méthode render 
+// Ce contrôleur fait appel au contrôleur abstrait afin d'utilser ses méthodes
 require ABSTRACT_CONTROLLER;
 
 
@@ -62,10 +62,15 @@ require ABSTRACT_CONTROLLER;
                 $_SESSION['old'] = inputsCleaner1($_POST);
                 $_SESSION['formErrors'] = $errors;
                 
-                return header("Location: " . $_SERVER['HTTP_REFERER']);
+                return redirectBack();
             }
 
-            dd('cool');
+            require USER;
+
+            $data_clean = inputsCleaner1($_POST);
+            createUser($data_clean);
+
+            return header("Location: /login");
         }
         
         return render("visitor/registration/register.html.php");

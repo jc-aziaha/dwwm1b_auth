@@ -32,3 +32,12 @@
      * Cette constante est un raccourci qui permet d'établir une connexion avec la base de données
      */
     const DB                    = __DIR__ . "/database.php";
+
+
+    /**
+     * Cette constante est un raccourci qui permet de charger le manager de table "user"
+     */
+    const USER                  = __DIR__ . "/../src/manager/user.php"; 
+
+
+    const AUTH_AUTHENTICATOR    = __DIR__ . "/../src/security/authAuthenticator.php";

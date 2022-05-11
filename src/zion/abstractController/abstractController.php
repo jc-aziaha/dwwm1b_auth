@@ -45,3 +45,15 @@ declare(strict_types=1);
     {
         return $layout_path;
     }
+
+
+    /**
+     * Cette fonction permet d'effectuer une redirection 
+     * vers la page de laquelle proviennent les données 
+     *
+     * @return void
+     */
+    function redirectBack() : void
+    {
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+    }

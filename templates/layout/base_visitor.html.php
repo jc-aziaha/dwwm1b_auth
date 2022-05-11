@@ -33,7 +33,7 @@
                             <a class="nav-link <?= ($_SERVER['REQUEST_URI'] === "/") ? 'active' : '' ?>" aria-current="page" href="/">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Connexion</a>
+                            <a class="nav-link <?= ($_SERVER['REQUEST_URI'] === "/login") ? 'active' : '' ?>" href="/login">Connexion</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?= ($_SERVER['REQUEST_URI'] === "/register") ? 'active' : '' ?>" href="/register">Inscription</a>
