@@ -62,6 +62,7 @@ HTML;
      */
     function old(string $input_name)
     {
+
         if (isset($_SESSION['old'][$input_name]) && !empty($_SESSION['old'][$input_name])) 
         {
             $data = $_SESSION['old'][$input_name];

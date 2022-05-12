@@ -29,6 +29,10 @@
     
     get("/user/category/index",      ["user/category/categoryController", "index"]);
     get("/user/category/create",     ["user/category/categoryController", "create"]);
+    post("/user/category/create",    ["user/category/categoryController", "create"]);
+    get("/user/category/{id}/edit",    ["user/category/categoryController", "edit"]);
+    post("/user/category/{id}/edit",    ["user/category/categoryController", "edit"]);
+    get("/user/category/{id}/delete",    ["user/category/categoryController", "delete"]);
     
 
 

@@ -78,6 +78,13 @@ declare(strict_types=1);
                                 $errors[$input_name][] = $message;
                             }
                         }
+                        else if( (substr($rule, 0, 14) === "existsInUpdate") && ($key === "$input_name.existsInUpdate") )
+                        {
+                            if ( existsInUpdate_($data_clean[$input_name], $rule) ) 
+                            {
+                                $errors[$input_name][] = $message;
+                            }
+                        }
                         
                     }
                 }
@@ -89,6 +96,62 @@ declare(strict_types=1);
 
 
 // ------------------------------------------------------------------------------
+
+
+    /**
+     * Cette fonction modifie les données d'un enregistrement d'une table.
+     * 
+     * Lors de la modification, elle ignore l'enregistrement dont les informations 
+     * sont en train d'être modifiées.
+     *
+     * @param string $value
+     * @param string $rule
+     * 
+     * @return bool
+     */
+    function existsInUpdate_(string $value, string $rule) : bool
+    {   
+
+        $cut = strstr($rule, "::");
+        $cut = str_replace('::', "", $cut);
+        $tab = explode(",", $cut);
+
+        $table   = $tab[0];
+        $column  = $tab[1];
+        $id      = (int) $tab[2];
+
+        require DB;
+
+        // On récupère tous les enrégistrement de la table souhaitée
+        $req = $db->prepare("SELECT * FROM {$table}");
+        $req->execute();
+        $data = $req->fetchAll();
+
+        // On parcoure le tableau contenant tous les enrégistrements, 
+        // Et pour chaque enregistrement
+        foreach ($data as $record) 
+        {
+            // Ignore là oû l'identifiant de l'enregistrement récupéré lors du tour de boucle
+            // n'est pas égal à l'identifiant contenu dans la règle de validation
+
+            // Autrement dit, parcours tout le tableau en ignorant l'enregistrement dont l'identifiant
+            // n'est pas égal à l'identifiant contentu dans la règle de validation
+            if ($record->id != $id) 
+            {
+                // Si la valeur contenu dans la colonne recherchée est égal à la valeur envoyée 
+                // par l'utilisateur depuis le formulaire, c'est qu'il y a une erreur.
+
+                // Autrement dit, le valeur envoyée par l'utilisateur appartient déjà à un enregistrement.
+                if ($record->$column == $value ) 
+                {
+                    return true;
+                }    
+            }
+        }
+        
+        return false;
+    }
+
 
 
     function same_($value, $rule, $data_clean)

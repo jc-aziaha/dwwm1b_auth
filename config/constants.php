@@ -28,6 +28,26 @@
     const VALIDATOR             = __DIR__ . "/../src/zion/validation/validator.php";
 
 
+    
+
+    /**
+     * Cette constante est un raccourci qui permet de charger l'authentificateur de l'application
+     */
+    const AUTH_AUTHENTICATOR    = __DIR__ . "/../src/security/authAuthenticator.php";
+
+
+    /**
+     * Cette constante est un raccourci qui permet de charger le "middleware" d'authentification
+     */
+    const AUTH_MIDDLEWARE       = __DIR__ . "/middleware/authMiddleware.php";
+
+
+
+
+
+
+// ---------------------------------------------Start Model-----------------------------------------------
+
     /**
      * Cette constante est un raccourci qui permet d'établir une connexion avec la base de données
      */
@@ -41,12 +61,7 @@
 
 
     /**
-     * Cette constante est un raccourci qui permet de charger l'authentificateur de l'application
+     * Cette constante est un raccorci qui permet de charger le manager de la table "category"
      */
-    const AUTH_AUTHENTICATOR    = __DIR__ . "/../src/security/authAuthenticator.php";
+    const CATEGORY              = __DIR__ . "/../src/manager/category.php";
 
-
-    /**
-     * Cette constante est un raccourci qui permet de charger le "middleware" d'authentification
-     */
-    const AUTH_MIDDLEWARE       = __DIR__ . "/middleware/authMiddleware.php";

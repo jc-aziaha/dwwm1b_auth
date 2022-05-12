@@ -10,13 +10,14 @@ declare(strict_types=1);
      * @param string $view_path
      * @return string
      */
-    function render(string $view_path) : string
+    function render(string $view_path, array $data = []) : string
     {
         // 1) Déclenchement de la temporisation de sortie avec ob_start(),
         // 2) et chargement dans cette mémoire du fichier contenant le code HTML de la vue
         // 3) Récupération du contenu du fichier grâce à ob_get_clean() et sauvegarde de ce dernier dans $content
         // parce que ob_get_clean() détruit le contenu juste après l'avoir lu.
         ob_start();
+        extract($data);
         require TEMPLATES . $view_path;
         $content = ob_get_clean();
 
