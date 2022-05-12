@@ -63,7 +63,7 @@ require ABSTRACT_CONTROLLER;
             // dd($_SESSION['auth']);
 
 
-            return redirectToUrl('/home');
+            return redirectToUrl('/user/home');
 
         }
 

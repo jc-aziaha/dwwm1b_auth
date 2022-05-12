@@ -44,3 +44,9 @@
      * Cette constante est un raccourci qui permet de charger l'authentificateur de l'application
      */
     const AUTH_AUTHENTICATOR    = __DIR__ . "/../src/security/authAuthenticator.php";
+
+
+    /**
+     * Cette constante est un raccourci qui permet de charger le "middleware" d'authentification
+     */
+    const AUTH_MIDDLEWARE       = __DIR__ . "/middleware/authMiddleware.php";

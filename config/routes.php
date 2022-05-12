@@ -24,8 +24,11 @@
     get("/logout",      ["visitor/authentication/loginController", "logout"]);
 
 
-                    // -------------Home-----------
-    get("/home",        ["user/home/homeController", "index"]);
+                    // -------------User-----------
+    get("/user/home",                ["user/home/homeController", "index"]);
+    
+    get("/user/category/index",      ["user/category/categoryController", "index"]);
+    get("/user/category/create",     ["user/category/categoryController", "create"]);
     
 
 

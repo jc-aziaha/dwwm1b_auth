@@ -57,6 +57,7 @@
         if (NULL == $router_data) 
         {
             require __DIR__ . "/controller/error/errorController.php";
+            http_response_code(404);
             return notFound();
         }
 

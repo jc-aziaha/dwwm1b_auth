@@ -34,9 +34,12 @@
                         </li>
                         <?php if(isset($_SESSION['auth']) && !empty($_SESSION['auth'])) : ?>
                             <li class="nav-item">
+                                <a class="nav-link" href="/user/home">Espace privé</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/logout">Déconnexion</a>
                             </li>
-                        <?php else :?>
+                        <?php else : ?>
                             <li class="nav-item">
                                 <a class="nav-link <?= ($_SERVER['REQUEST_URI'] === "/login") ? 'active' : '' ?>" href="/login">Connexion</a>
                             </li>
